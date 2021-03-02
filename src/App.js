@@ -1,21 +1,37 @@
-import {Jumbotron, Form } from 'react-bootstrap'
+import {Alert, Button, Jumbotron, Form, Container, Row, Col } from 'react-bootstrap'
 
 function App() {
   return (
     <div className="App">
-      <Jumbotron>
-        <h1>Hello, world!</h1>
-        <p>
-          This is a simple hero unit, a simple jumbotron-style component for calling
-          extra attention to featured content or information.
-        </p>
-    </Jumbotron>
+      <Container fluid="md">
+
+        <Jumbotron>
+          <h1>Did you walk the dog yet?</h1>
+          <p>
+            A app to track your all the walks with you and your dog!
+          </p>
+      </Jumbotron>
+
+      <Alert variant="success">
+        <Alert.Heading>Walk details</Alert.Heading>
+      </Alert>
+
         <Form>
-        <Form.Group>
-          <Form.Label>Form</Form.Label>
-          <Form.Control as="input" type="number"/>
-        </Form.Group>
-      </Form>
+          <Form.Group>
+            <Form.Label>How long of a walk in minutes?</Form.Label>
+            <Row>
+              <Col xs={1}>
+                <Form.Control as="input" type="number" id="walkminutes"/>
+              </Col>
+            </Row>
+            <Form.Check type="checkbox" label="Pee?" id="peecheck"/>
+            <Form.Check type="checkbox" label="Poop?" id="poopcheck"/>
+          </Form.Group>
+          <Button variant="secondary" type="submit">
+            Submit
+          </Button>
+        </Form>
+      </Container>
     </div>
     );
 }
