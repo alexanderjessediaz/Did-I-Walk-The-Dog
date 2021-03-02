@@ -1,6 +1,18 @@
+import { Component } from 'react';
 import {Button, Jumbotron, Form, Container, Row, Col } from 'react-bootstrap'
 
-function App() {
+class App extends Component {
+
+  state = {
+    dogs: []
+  }
+
+  componentDidMount(){
+    fetch("http://localhost:4000/dogs")
+      .then(response => response.json())
+      .then(console.log)
+  }
+  render (){
   return (
     <div className="App">
 
@@ -9,6 +21,18 @@ function App() {
           <p>
             A app to track your all the walks with you and your dog!
           </p>
+          <br></br>
+          <Form>
+            <Row>
+            <Form.Label>What's the dog's name?</Form.Label>
+              <Col xs={2}>
+              <Form.Control as="input" type="text" id="dogname"/>
+              </Col>
+          <Button variant="secondary" type="submit" id="create-dog-BTN">
+            Create Dog
+          </Button>
+            </Row>  
+          </Form>
       </Jumbotron>
 
       <Container fluid="md">
@@ -37,16 +61,28 @@ function App() {
               <Form.Check type="checkbox" label="Pee?" id="peecheck"/>
             </Row>
             <Row>
+              <Form.Label>How many times?</Form.Label>
+              <Col xs={1}>
+                <Form.Control as="input" type="number" id="peecount"/>
+              </Col>
+            </Row>
+            <Row>
               <Form.Check type="checkbox" label="Poop?" id="poopcheck"/>
             </Row>
+            <Row>
+            <Form.Label>How many times?</Form.Label>
+              <Col xs={1}>
+                <Form.Control as="input" type="number" id="peecount"/>
+              </Col>
+            </Row>
           </Form.Group>
-          <Button variant="secondary" type="submit">
+          <Button variant="secondary" type="submit" id="submitBTN">
             Submit
           </Button>
         </Form>
       </Container>
     </div>
-    );
+    )};
 }
 
 export default App;
